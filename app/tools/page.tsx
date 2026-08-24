@@ -3,8 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ALL_TOOLS, CATEGORIES } from '@/lib/tools-data';
-import { Search } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 
 export default function ToolsDirectoryPage() {
   const [query, setQuery] = useState('');
@@ -99,7 +98,6 @@ export default function ToolsDirectoryPage() {
           {filteredTools.map((tool, idx) => {
             const catInfo = CATEGORIES.find((c) => c.id === tool.category);
             const iconName = catInfo?.iconName || 'Wrench';
-            const IconComponent = (LucideIcons as any)[iconName] || LucideIcons.Wrench;
 
             const badgeStyle =
               tool.category === 'image'
@@ -123,7 +121,7 @@ export default function ToolsDirectoryPage() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className={`w-8 h-8 flex items-center justify-center ${badgeStyle}`}>
-                      <IconComponent className="h-4 w-4" />
+                      <CategoryIcon name={iconName} className="h-4 w-4" />
                     </div>
                     {tool.popular && (
                       <span className="font-mono text-[10px] uppercase font-bold text-gray-400 group-hover:text-black">

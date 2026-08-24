@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { CATEGORIES, getToolsByCategory, getCategoryById } from '@/lib/tools-data';
-import { ShieldCheck } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -96,7 +95,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       {/* Tools Grid */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tools.map((tool, idx) => {
-          const IconComponent = (LucideIcons as any)[category.iconName] || LucideIcons.Wrench;
           const indexStr = idx + 1 < 10 ? `0${idx + 1}` : `${idx + 1}`;
 
           const badgeStyle =
@@ -119,7 +117,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className={`w-8 h-8 flex items-center justify-center ${badgeStyle}`}>
-                    <IconComponent className="h-4 w-4" />
+                    <CategoryIcon name={category.iconName} className="h-4 w-4" />
                   </div>
                   {tool.popular && (
                     <span className="font-mono text-[10px] uppercase font-bold text-gray-400 group-hover:text-black">

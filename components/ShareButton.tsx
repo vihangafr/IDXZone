@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Share2, Check, Sparkles } from 'lucide-react';
-import ShareModal, { ShareData } from './ShareModal';
+import dynamic from 'next/dynamic';
+import { Share2 } from 'lucide-react';
+import type { ShareData } from './ShareModal';
+
+// Lazily load ShareModal only when clicked
+const ShareModal = dynamic(() => import('./ShareModal'), {
+  ssr: false,
+});
 
 interface ShareButtonProps {
   data?: ShareData;
@@ -76,7 +82,9 @@ export default function ShareButton({
         {variant !== 'icon' && <span>{label}</span>}
       </button>
 
-      <ShareModal isOpen={isOpen} onClose={() => setIsOpen(false)} data={activeData} />
+      {isOpen && (
+        <ShareModal isOpen={isOpen} onClose={() => setIsOpen(false)} data={activeData} />
+      )}
     </>
   );
 }

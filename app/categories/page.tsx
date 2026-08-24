@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { CATEGORIES, ALL_TOOLS } from '@/lib/tools-data';
-import { Folder } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import CategoryIcon from '@/components/CategoryIcon';
 
 export const metadata: Metadata = {
   title: 'Tool Categories - Free Fast Online Utilities | IDX.ZONE',
@@ -34,7 +33,6 @@ export default function CategoriesPage() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {CATEGORIES.map((cat, idx) => {
           const toolsInCat = ALL_TOOLS.filter((t) => t.category === cat.id);
-          const IconComponent = (LucideIcons as any)[cat.iconName] || Folder;
           const indexStr = idx + 1 < 10 ? `0${idx + 1}` : `${idx + 1}`;
 
           return (
@@ -45,7 +43,7 @@ export default function CategoriesPage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-9 h-9 bg-black text-white flex items-center justify-center">
-                    <IconComponent className="h-4 w-4" />
+                    <CategoryIcon name={cat.iconName} className="h-4 w-4" />
                   </div>
                   <span className="font-mono text-[10px] uppercase font-bold text-gray-400">
                     {toolsInCat.length} TOOLS

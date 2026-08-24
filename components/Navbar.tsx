@@ -1,17 +1,34 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Search, Menu, X, ShieldCheck } from 'lucide-react';
-import ToolSearchModal from './ToolSearchModal';
+import dynamic from 'next/dynamic';
+import { Search, Menu, X } from 'lucide-react';
 import { CATEGORIES } from '@/lib/tools-data';
+
+// Dynamically load the search modal only when requested
+const ToolSearchModal = dynamic(() => import('./ToolSearchModal'), {
+  ssr: false,
+});
 
 export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Global keyboard shortcut for ⌘K / Ctrl+K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -143,8 +160,10 @@ export default function Navbar() {
         )}
       </header>
 
-      {/* Global Search Modal */}
-      <ToolSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {/* Global Search Modal - Lazy Loaded */}
+      {isSearchOpen && (
+        <ToolSearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      )}
     </>
   );
 }
