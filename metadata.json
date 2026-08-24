@@ -1,0 +1,6 @@
+{
+  "name": "IDX.ZONE",
+  "description": "Production-ready browser-based tools for images, PDF, text, code, SEO, and more. Fast, private, and free.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
