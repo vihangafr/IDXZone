@@ -2,13 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CATEGORIES, getPopularTools } from '@/lib/tools-data';
-import { ShieldCheck, Zap, Lock, Cpu } from 'lucide-react';
 
 export default function Footer() {
   const popularTools = getPopularTools().slice(0, 8);
 
   return (
-    <footer id="site-footer" className="mt-20 border-t border-gray-200 bg-white text-gray-600 font-sans">
+    <footer id="site-footer" className="mt-20 border-t border-gray-200 bg-white text-gray-600 font-sans content-visibility-auto">
       {/* Privacy and Technical Highlights */}
       <div className="border-b border-gray-100 bg-gray-50/60">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -55,6 +54,7 @@ export default function Footer() {
                 alt="IDX.ZONE"
                 width={140}
                 height={36}
+                loading="lazy"
                 className="h-9 w-auto max-w-full object-contain"
               />
             </Link>

@@ -8,7 +8,7 @@ import ToolsExplorer from '@/components/ToolsExplorer';
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
-      {/* Hero Header Section */}
+      {/* Hero Header Section - Critical Above the fold */}
       <section className="border-b border-gray-100 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
@@ -51,8 +51,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Category Directory Section */}
-      <section className="border-t border-gray-200 bg-gray-50/50 py-16">
+      {/* Category Directory Section - Below the fold with content-visibility */}
+      <section className="border-t border-gray-200 bg-gray-50/50 py-16 content-visibility-section">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
             <div>
@@ -98,8 +98,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Modernist Privacy & Engine Callout */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      {/* Modernist Privacy & Engine Callout - Below the fold with content-visibility */}
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 content-visibility-section">
         <div className="border-2 border-black p-8 sm:p-12 bg-white rounded-sm">
           <div className="max-w-3xl">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest bg-black text-white px-2 py-1">

@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 400px;
+  }
+  .content-visibility-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
+}
