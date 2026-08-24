@@ -24,29 +24,16 @@ export default function Navbar() {
               id="nav-logo"
               className="flex items-center gap-2 group transition-opacity hover:opacity-85"
             >
-              {/* Desktop / Tablet: Transparent Logo */}
-              <div className="relative hidden h-9 w-36 items-center sm:flex">
+              {/* Brand Logo */}
+              <div className="relative flex h-8 sm:h-9 w-auto items-center">
                 <Image
-                  src="/branding/logo-transparent.png"
+                  src="/uploads/transparent-logo.png"
                   alt="IDX.ZONE"
                   width={144}
                   height={36}
-                  className="h-9 w-auto max-w-full object-contain"
+                  className="h-8 sm:h-9 w-auto max-w-full object-contain"
                   priority
                 />
-              </div>
-
-              {/* Mobile: Compact 64x64 Icon + Brand Title */}
-              <div className="flex items-center gap-2 sm:hidden">
-                <Image
-                  src="/branding/logo-icon-64.png"
-                  alt="IDX.ZONE"
-                  width={30}
-                  height={30}
-                  className="h-7 w-7 rounded-sm object-contain"
-                  priority
-                />
-                <span className="text-lg font-black tracking-tighter text-black">IDX.ZONE</span>
               </div>
             </Link>
 

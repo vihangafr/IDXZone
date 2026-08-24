@@ -22,11 +22,10 @@ export const metadata: Metadata = {
   authors: [{ name: 'IDX.ZONE' }],
   icons: {
     icon: [
-      { url: '/branding/logo-icon-64.png', sizes: '64x64', type: 'image/png' },
-      { url: '/branding/logo-icon-64.png', sizes: 'any' },
+      { url: '/uploads/transparent-logo.png' },
     ],
     apple: [
-      { url: '/branding/logo-icon-64.png' }
+      { url: '/uploads/transparent-logo.png' }
     ]
   },
   keywords: [
@@ -54,9 +53,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/branding/logo-main.png',
-        width: 1280,
-        height: 853,
+        url: '/uploads/orginal-image.png',
+        width: 1536,
+        height: 1024,
         alt: 'IDX.ZONE',
       },
     ],
@@ -66,7 +65,7 @@ export const metadata: Metadata = {
     title: 'IDX.ZONE — Simple, Fast, Free Tools',
     description:
       'Production-ready browser-based tools for images, PDF, text, code, SEO, and more. Fast, private, and free.',
-    images: ['/branding/logo-main.png'],
+    images: ['/uploads/orginal-image.png'],
   },
   robots: {
     index: true,

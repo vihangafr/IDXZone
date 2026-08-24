@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 group">
               <Image
-                src="/branding/logo-transparent.png"
+                src="/uploads/transparent-logo.png"
                 alt="IDX.ZONE"
                 width={140}
                 height={36}
