@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ToolDefinition, getToolBySlug, CATEGORIES } from '@/lib/tools-data';
 import { ChevronRight, ShieldCheck, HelpCircle, ArrowRight } from 'lucide-react';
+import ShareButton from '@/components/ShareButton';
 
 interface ToolLayoutProps {
   tool: ToolDefinition;
@@ -13,6 +14,14 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
   const relatedTools = tool.relatedSlugs
     .map((slug) => getToolBySlug(slug))
     .filter((t): t is ToolDefinition => Boolean(t));
+
+  const toolShareData = {
+    title: `${tool.name} — Free Browser Tool`,
+    text: tool.tagline || tool.description,
+    url: `/tools/${tool.slug}`,
+    category: categoryInfo?.name || tool.category,
+    isTool: true,
+  };
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8 font-sans">
@@ -31,14 +40,24 @@ export default function ToolLayout({ tool, children }: ToolLayoutProps) {
 
       {/* Tool Header */}
       <div className="mb-8 border-b border-gray-100 pb-8">
-        <div className="flex flex-wrap items-center gap-2 mb-3">
-          <span className="inline-flex items-center bg-black px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest text-white">
-            {categoryInfo?.name || tool.category}
-          </span>
-          <span className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[10px] font-mono text-gray-700">
-            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-            <span>CLIENT-SIDE ENGINE</span>
-          </span>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center bg-black px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest text-white">
+              {categoryInfo?.name || tool.category}
+            </span>
+            <span className="inline-flex items-center gap-1.5 border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[10px] font-mono text-gray-700">
+              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+              <span>CLIENT-SIDE ENGINE</span>
+            </span>
+          </div>
+
+          {/* Single Dedicated Tool Share Button */}
+          <ShareButton
+            data={toolShareData}
+            label={`Share ${tool.name}`}
+            variant="secondary"
+            id={`share-tool-${tool.slug}`}
+          />
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-black leading-tight">

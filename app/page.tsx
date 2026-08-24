@@ -3,8 +3,9 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ALL_TOOLS, CATEGORIES } from '@/lib/tools-data';
-import { Search, ArrowRight, ShieldCheck, Zap, Lock, Cpu, Folder } from 'lucide-react';
+import { Search, ArrowRight, ShieldCheck, Zap, Lock, Cpu, Folder, Share2 } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
+import ShareButton from '@/components/ShareButton';
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -42,19 +43,23 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Quick Stats Block */}
-            <div className="flex flex-wrap gap-4 font-mono text-xs text-gray-600">
+            {/* Quick Stats Block & Share Button */}
+            <div className="flex flex-wrap items-center gap-4 font-mono text-xs text-gray-600">
               <div className="border border-gray-200 p-3 bg-gray-50/50 min-w-[120px]">
                 <div className="text-xl font-bold text-black">{ALL_TOOLS.length}+</div>
                 <div className="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Active Utilities</div>
               </div>
               <div className="border border-gray-200 p-3 bg-gray-50/50 min-w-[120px]">
-                <div className="text-xl font-bold text-black">0.0 ms</div>
-                <div className="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Upload Latency</div>
-              </div>
-              <div className="border border-gray-200 p-3 bg-gray-50/50 min-w-[120px]">
                 <div className="text-xl font-bold text-black">100%</div>
                 <div className="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">Local Privacy</div>
+              </div>
+              <div className="w-full sm:w-auto">
+                <ShareButton
+                  id="hero-share-website-btn"
+                  label="Share Website"
+                  variant="primary"
+                  className="w-full sm:w-auto h-[62px] px-5"
+                />
               </div>
             </div>
           </div>

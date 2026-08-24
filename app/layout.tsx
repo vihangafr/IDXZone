@@ -22,12 +22,16 @@ export const metadata: Metadata = {
   authors: [{ name: 'IDX.ZONE' }],
   icons: {
     icon: [
-      { url: '/uploads/transparent-logo.png' },
+      { url: '/favicon/favicon.ico', sizes: 'any' },
+      { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon/favicon-96x96.png', type: 'image/png', sizes: '96x96' },
     ],
+    shortcut: ['/favicon/favicon.ico'],
     apple: [
-      { url: '/uploads/transparent-logo.png' }
-    ]
+      { url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
+  manifest: '/favicon/site.webmanifest',
   keywords: [
     'IDX.ZONE',
     'free online tools',
